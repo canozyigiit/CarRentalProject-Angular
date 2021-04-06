@@ -1,0 +1,161 @@
+<br/>
+<br>
+<br>
+<h5 class="alert alert-info mt-3">Araba Güncelleme</h5>
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Marka</th>
+      <th scope="col">Renk</th>
+      <th scope="col">Model Yılı</th>
+      <th scope="col">Günkül Kiralama Bedeli</th>
+      <th scope="col">Açıklama</th>
+      <th scope="col">Findeks Puanı</th>
+      <th scope="col">Operasyonlar</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let carDetail of carDetails">
+      <td scope="col">{{ carDetail.carId  }}</td>
+      <td scope="col">{{ carDetail.brandName | uppercase }}</td>
+      <td scope="col">{{ carDetail.colorName | uppercase }}</td>
+      <td scope="col">{{ carDetail.modelYear }}</td>
+      <td scope="col">
+        {{ carDetail.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}
+      </td>
+      <td scope="col">{{ carDetail.description }}</td>
+      <td scope="col">{{ carDetail.findexScore }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          (click)="setCurrentCarId(carDetail.carId)"
+          data-bs-toggle="modal"
+          data-bs-target="#updateCarModal"
+        >
+          Düzenle
+        </button>
+        &nbsp;
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Sil
+        </button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="updateCarModal"
+  tabindex="-1"
+  aria-labelledby="updateCarModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateCarModal">
+          Araba bilgilerini düzenle
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carForm">
+          <div class="md-3">
+            <label for="brandId">Marka</label>
+            <select id="brandId" formControlName="brandId" class="form-control">
+              <option [ngValue]="brand.brandId" *ngFor="let brand of brands">
+                {{ brand.brandName }}
+              </option>
+            </select>
+          </div>
+          <div class="md-3">
+            <label for="colorId">Renk</label>
+            <select id="colorId" formControlName="colorId" class="form-control">
+              <option [ngValue]="color.colorId" *ngFor="let color of colors">
+                {{ color.colorName }}
+              </option>
+            </select>
+          </div>
+
+          <div class="md-3">
+            <label for="modelYear">Model Yılı</label>
+            <input
+              type="number"
+              id="modelYear"
+              class="form-control"
+              formControlName="modelYear"
+            />
+          </div>
+
+          <div class="md-3">
+            <label for="dailyPrice">Günlük Kiralama Ücreti</label>
+            <input
+              type="number"
+              id="dailyPrice"
+              class="form-control"
+              formControlName="dailyPrice"
+            />
+          </div>
+
+          <div class="md-3">
+            <label for="description">Açıklama</label>
+            <input
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+            />
+          </div>
+          <div class="md-3">
+            <label for="findexScore">Findeks Puanı</label>
+            <input
+              type="number"
+              id="findexScore"
+              class="form-control"
+              formControlName="findexScore"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+          type="button"
+          (click)="update()"
+          (click)="refresh()"
+          class="btn btn-primary"
+        >
+          Güncelle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aracı Sil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5> Silmek istediğinize emin misiniz?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button type="button" class="btn btn-danger"  (click)="refresh()">Sil</button>
+      </div>
+    </div>
+  </div>
+</div>

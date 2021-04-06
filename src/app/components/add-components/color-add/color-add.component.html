@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-3">
+    <app-brand></app-brand>
+    <br />
+    <app-color></app-color>
+  </div>
+  <br>
+  <div class="col-md-9">
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Color Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="colorAddForm">
+          <div class="mb-3">
+            <label for="colorName">Color Name</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="colorName"
+                formControlName="colorName"
+                class="form-control"
+                placeholder="Color Name"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-warning" (click)="add()">
+        Color Ekle
+      </button>
+    </div>
+  </div>
+</div>
+  </div>
+

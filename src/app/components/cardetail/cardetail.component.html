@@ -1,0 +1,270 @@
+<br />
+
+<div class="row">
+  <div
+    *ngIf="isLogOK() == true && rentalControl == false"
+    class="col-md-3"
+    class="card text-white bg-danger mb-3"
+    style="max-width: 18rem"
+  >
+    <div class="card-header">Bilgilendirme!</div>
+    <div class="card-body">
+      <h5 class="card-title">Araç şu anda kiralanamaz.</h5>
+      <p class="card-text">
+        Araç başkası tarafından kiralandığı için kiralama işlemi
+        gerçekleştirilemiyor.Lütfen başka araçlara bakınız.
+      </p>
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-warning" routerLink="/cars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-90deg-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"
+            />
+          </svg>
+          Araçlar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isLogOK() == false" class="col-md-3">
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem">
+      <div class="card-header">Bilgilendirme!</div>
+      <div class="card-body">
+        <h5 class="card-title">Giriş Yapılmamış!</h5>
+        <p class="card-text">
+          Kiralama işlemi yapabilmek için lütfen giriş yapın.
+        </p>
+        <a routerLink="/login" class="btn btn-warning">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-box-arrow-in-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+            />
+          </svg>
+          Giriş Yap</a
+        >
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isLogOK() == true && rentalControl == true" class="col-md-3">
+    <div class="card text-dark bg-warning mb-3" style="max-width: 18rem">
+      <div class="card-header">Bilgilendirme!</div>
+      <div class="card-body">
+        <h5 class="card-title">Findeks Puanı Sorgula</h5>
+        <p class="card-text">
+          Aracı kiralayabilmek için lütfen findeks puanınızı kontrol edin.
+        </p>
+        <div>
+          <label for="Customer" class="form-label">Müşteri</label>
+          <select
+            formControlName="customerId"
+            [(ngModel)]="customerId"
+            (change)="customerCheck($event)"
+            class="form-select"
+          >
+            <option
+              *ngFor="let customer of customers"
+              [ngValue]="customer.customerId"
+              class="option"
+            >
+              {{ customer.companyName }}
+            </option>
+          </select>
+        </div>
+        <br />
+        <div class="card text-dark bg-danger" style="max-width: 18rem">
+          <div *ngIf="!findeksLoad" class="alert alert-danger" role="alert">
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <strong>Findeks Puanı Sorgulanıyor</strong>
+          </div>
+          <div
+            *ngIf="findeksLoad == true && findeksError == true"
+            class="alert alert-danger"
+            role="alert"
+          >
+            <div class="spinner-grow text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <strong>Findeks puanı yetersiz lütfen başka araçlara bakınız.</strong>
+            <br />
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-warning" routerLink="/cars">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-90deg-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"
+                />
+              </svg>
+          Araçlar
+              </button>
+            </div>
+          </div>
+          <div
+            *ngIf="findeksLoad == true && findeksError == false"
+            class="alert alert-success"
+            role="alert"
+          >
+            <div class="spinner-grow text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <strong>{{ findeksMsg }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <h4 style="text-align: center"></h4>
+    <div
+      *ngFor="let carDetail of carDetail"
+      style="text-align: center"
+      class="p-3 mb-2 bg-warning text-white"
+    >
+      {{ carDetail.brandName }} {{ carDetail.modelYear }}
+    </div>
+    <div class="card-header text-center">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div
+          class="carousel-inner d-flex"
+          style="height: 50vh; min-height: 20rem; max-height: 30rem"
+        >
+          <div
+            *ngFor="let image of carImage; index as i; first as firstImage"
+            class="carousel-item align-self-center"
+            [ngClass]="{ active: firstImage }"
+            style="height: 100%; width: 100%"
+          >
+            <img
+              src="{{ baseUrl }}{{ image.imagePath }}"
+              class=""
+              style="height: 100%; width: 100%; object-fit: contain"
+              alt="carImage"
+            />
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div
+          *ngFor="let carDetail of carDetail"
+          style="text-align: center"
+          aria-current="true"
+        >
+          <h4>{{ carDetail.brandName }} {{ carDetail.description }}</h4>
+        </div>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Marka</th>
+                <th>Renk</th>
+                <th>Model Yılı</th>
+                <th>Günlük Kiralama Bedeli</th>
+                <th>Açıklama</th>
+                <th>Findeks Puanı</th>
+              </tr>
+            </thead>
+            <tr *ngFor="let carDetail of carDetail">
+              <td>{{ carDetail.carId }}</td>
+              <td>{{ carDetail.brandName }}</td>
+              <td>{{ carDetail.colorName }}</td>
+              <td>{{ carDetail.modelYear }}</td>
+              <td>
+                {{
+                  carDetail.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2"
+                }}
+              </td>
+              <td>{{ carDetail.description }}</td>
+              <td>{{ carDetail.findexScore }}</td>
+            </tr>
+          </table>
+          <button
+            *ngIf="rentalControl == false"
+            type="button"
+            class="btn btn-secondary btn-lg"
+            disabled
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-exclamation-diamond-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </svg>
+            {{ rentalMessage }}
+          </button>
+          <div class="d-grid gap-2">
+            <button
+              *ngIf="
+                isLogOK() == true && rentalControl == true && !findeksError
+              "
+              type="button"
+              class="btn btn-warning btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#rentalModal"
+            >
+              Aracı Kirala
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-rental ></app-rental>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<h4 style="text-align: center">Renkler</h4>
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+   placeholder="Color Search">
+</div>
+<div *ngIf="filterText" class="alert alert-info">
+  {{filterText}} için arama sonuçları
+</div>
+<table class="table">
+  <tr scope="col" [class]="getAllColorClass()"  routerLink="/cars">Tüm Araçlar</tr>
+ <tbody>
+    <tr (click)="setCurrentColor(color)"
+    routerLink="/cars/color/{{color.colorId}}"
+     *ngFor="let color of colors |colorFilter:filterText"
+     [class]="getCurrentColorClass(color)">
+      <td scope="col">{{ color.colorName }}</td>
+    </tr>
+  </tbody>
+</table>

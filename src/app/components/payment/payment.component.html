@@ -1,0 +1,177 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">        
+      <div class="p-3 mb-2 bg-success text-white">Ödeme Sayfası <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+        <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+      </svg> </div>
+    </div>
+
+    <button *ngIf="paymentWait == true" class="btn btn-primary" type="button"disabled>
+      <span class="spinner-border spinner-border-sm" role="status"aria-hidden="true"></span>
+       Ödeme tamamlanıyor lütfen bekleyiniz.
+    </button>  
+
+    <div *ngIf="paymentSuccess" class="card text-white bg-success">        
+      <div class="card-body">
+        <h5 class="card-title">Ödeme İşlemi Başarılı <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+          <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+          <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+        </svg></h5>
+        <p class="card-text">Araç Kiralandı.</p>
+      </div>
+    </div>
+
+    <div *ngIf="paymentError" class="card text-white bg-danger">        
+      <div class="card-body">
+        <h5 class="card-title">Ödeme Tamamlanamadı!</h5>
+      </div>
+      <br>
+    </div>
+
+    <div *ngIf="paymentSuccess == false  && paymentWait==false" class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-2">
+          <div class="p-3 mb-2 bg-success text-white">Kiralama Bilgisi <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          </svg></div>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <small class="text-muted">Kiralama Başlangıç Tarihi :</small>
+              <h6 class="my-0">{{rentDate}}</h6>
+              
+            </div>            
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <small class="text-muted">Kiralama Bitiş Tarihi :</small>
+                <h6 class="my-0">{{returnDate}}</h6>
+                
+              </div>            
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <small class="text-muted">Kiralanacak gün sayısı :</small>
+                <h6 class="my-0">{{totalDay}}</h6>
+                
+              </div>            
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <small class="text-muted">Günlük Ücret :</small>
+                <h6 class="my-0">{{dailyPrice}} TL</h6>
+               
+              </div>            
+            </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Toplam Ücret</span>
+            <strong>{{totalPrice}} TL</strong>
+          </li>
+        </ul>
+        <form class="card p-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="İndirim kodu">
+          <button type="submit" class="btn btn-secondary">Uygula</button>
+        </div>
+      </form>
+      </div>
+      
+      <div class="col-md-7 col-lg-8">
+
+        <div class="row gy-3">
+          <div class="col-md-12">
+            <label for="cc-name" class="form-label">Kayıtlı Kredi Kartlarınız  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"  />
+            </svg></label>
+            <select class="form-select" (change)="cardChange($event)" [(ngModel)]="creditCardId" aria-label="Default select example">
+              <option *ngFor="let card of creditCards" [ngValue]="card.id">{{card.nameOnCard}} - {{card.cardNumber}}</option>                
+            </select>
+          </div>
+        </div>
+        <br>
+
+        <form [formGroup]="paymentAddForm" class="needs-validation" novalidate>   
+          <div class="form-group">
+            <input formControlName="userId" id="userId" type="hidden" />
+          </div>
+          <div class="row gy-3">
+            <div class="col-md-12">
+              <label for="nameOnCard" class="form-label">Kart Üzerindeki isim  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+                <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+                <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+              </svg> </label>
+              <input formControlName="nameOnCard" type="text" class="form-control" id="nameOnCard" placeholder="Kart üzerindeki isim"   required>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>             
+
+            <div class="col-md-12">
+              <label for="cardNumber" class="form-label">Kredi Kartı Numarası</label>
+              <input formControlName="cardNumber" [(ngModel)]="cardNumber" type="text" class="form-control" id="cardNumber"  placeholder="Kart numarası"  required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cardMonth" class="form-label">Son Kullanım Ay</label>
+              <input formControlName="cardMonth"  type="text" class="form-control" id="cardMonth" placeholder="Son kullanım ayı" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cardYear" class="form-label">Son Kullanım Yıl</label>
+              <input formControlName="cardYear" type="text" class="form-control" id="cardYear" placeholder="Son kullanım yılı" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cvv" class="form-label">CVV</label>
+              <input formControlName="cvv" type="number" class="form-control" id="cvv" placeholder="cvv" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button (click)="paymentAdd()" class="w-100 btn btn-success btn-lg" type="submit">Ödeme Yap</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<button [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cardSaveModal" #btnCardSave>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="cardSaveModal" tabindex="-1" aria-labelledby="cardSaveModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cardSaveModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+        </svg> Kredi kartı bilgileriniz kayıt edilsin mi?</h5>
+        <button #cardSaveModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Kredi kartınızı kayıt ederek bir sonraki ödemelerinizi daha kolay gerçekleştirebilirsiniz.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        <button (click)="creditCardAdd()" type="button" class="btn btn-success">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div
+  class="modal fade"
+  id="rentalModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ car.brandName | uppercase }} {{ car.description }} Kirala
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeModal
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="rentalForm">
+            <div class="form-group">
+            <input formControlName="carId" type="hidden" />
+          </div> 
+          <div class="form-group">
+            <input  id="customer" formControlName="customer" type="hidden" />
+          </div> 
+
+          <fieldset>
+            <div class="mb-3">
+              <label for="rentDate" class="form-label">Başlangıç Tarihi</label>
+              <div class="form-group">
+                <input
+                  type="datetime-local"
+                  id="rentDate"
+                  formControlName="rentDate"
+                  min="{{ minDate }}"
+                  (change)="onChangeEvent($event)"
+                  type="date"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="returnDate" class="form-label">Bitiş Tarihi</label>
+              <div class="form-group">
+                <input
+                  type="datetime-local"
+                  id="returnDate"
+                  formControlName="returnDate"
+                  min="{{ minDate }}"
+                  (change)="returnDateChangeEvent($event)"
+                  type="date"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+             <div class="mb-3">
+              <label for="totalDay" class="form-label" disabled>Kiralanacak Gün Sayısı</label>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="totalDay"
+                  formControlName="totalDay"
+                  [(ngModel)]="totalDay"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+            </div> 
+
+             <div class="mb-3">
+              <label for="dailyPrice" class="form-label" disabled
+                >Günlük Fiyat</label
+              >
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="dailyPrice"
+                  formControlName="dailyPrice"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+            </div> 
+
+            <div class="mb-3">
+              <label for="totalPrice" class="form-label" disabled
+                >Toplam Fiyat</label
+              >
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="totalPrice"
+                  formControlName="totalPrice"
+                  [(ngModel)]="totalPrice"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Vazgeç
+        </button>
+        <button (click)="paymentRoute()" type="button" class="btn btn-success">
+          Ödeme
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

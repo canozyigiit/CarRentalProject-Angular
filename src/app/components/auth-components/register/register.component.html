@@ -1,0 +1,125 @@
+<!-- <body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="registerForm">
+      <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+
+      <div class="form-floating">
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          placeholder="Ad"
+        />
+        <label for="floatingInput">Ad</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          placeholder="Soyad"
+        />
+        <label for="floatingInput">Soyad</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="E Posta"
+        />
+        <label for="floatingInput">Eposta</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Parola"
+        />
+        <label for="floatingInput">Parola</label>
+      </div>
+
+      <div class="checkbox mb-3">
+      </div>
+      <button (click)="register()" class="w-100 btn btn-lg btn-success">
+        Kayıt Ol
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+  </main>
+</body> -->
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-5 py-5">
+    <div class="col-lg-7  ">
+      <h1 class="display-4 fw-bold lh-1 mb-3">CarRental</h1>
+      <p class="col-lg-10 fs-4">Hemen kaydolarak araçlara hızlıca göz atın ve istediğiniz aracı en uygun fiyatlara kiralayın.</p>
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="http://localhost:5000/register.jpg" class="w-100" alt="...">
+    </div>
+    
+    <div class="col-10 mx-auto col-lg-5">
+      <h5 >Kayıt Ol</h5>
+      <form [formGroup]="registerForm" class="p-5 border rounded-3 bg-light">
+        <div class="form-floating mb-3">
+          <input
+            formControlName="firstName"
+            type="text"
+            class="form-control"
+            placeholder="Ad"
+          />
+          <label for="floatingInput">Ad</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+            placeholder="Soyad"
+          />
+          <label for="floatingInput">Soyad</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">E-Posta</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Parola</label>
+        </div>
+        <div class="checkbox mb-3"></div>
+        <button
+          class="w-100 btn btn-lg btn-success"
+          (click)="register()"
+          type="submit"
+        >
+          Kayıt Ol
+        </button>
+        <hr class="my-4" />
+        <p class="card-text bg-light" style="transform: rotate(0)">
+          Zaten bir hesabın var mı?
+          <a routerLink="/register" class="text-warning stretched-link"
+            >Giriş Yap</a
+          >'a tıklayarak hemen giriş yapın.
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
