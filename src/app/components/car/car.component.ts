@@ -16,7 +16,7 @@ export class CarComponent implements OnInit {
   carDetails:CarDetail[];
   carDetail:CarDetail;
   filterText:""
-  baseUrl = "http://localhost:5000";
+  baseUrl = "http://localhost:5000/";
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute,
     private localStorageService:LocalStorageService) {}

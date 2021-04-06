@@ -1,71 +1,75 @@
 <br />
-<div class="row">
-  <div class="col-md-3">
-    <app-brand></app-brand>
-    <br />
-    <app-color></app-color>
-    &nbsp;
-  </div>
-  <div class="col-md-9">
-    &nbsp;
-    <app-filter></app-filter>
-    <h4 style="text-align: center"></h4>
-    <div class="mb-3">
-      <input
-        type="text"
-        [(ngModel)]="filterText"
-        class="form-control"
-        id="filterText"
-        placeholder="Araba Ara"
-      />
+<br />
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-brand></app-brand>
+      <br />
+      <app-color></app-color>
+      &nbsp;
     </div>
-    <div *ngIf="filterText" class="alert alert-info">
-      {{ filterText }} için arama sonuçları
-    </div>
-    <div
-      class="d-flex flex-wrap justify-content-center justify-content-xl-start"
-      style="gap: 0.75em; padding: 0; margin-top: 20px"
-    >
+    <div class="col-md-9">
+      &nbsp;
+      <app-filter></app-filter>
+      <h4 style="text-align: center"></h4>
+      <div class="mb-3">
+        <input
+          type="text"
+          [(ngModel)]="filterText"
+          class="form-control"
+          id="filterText"
+          placeholder="Araba Ara"
+        />
+      </div>
+      <div *ngIf="filterText" class="alert alert-info">
+        {{ filterText }} için arama sonuçları
+      </div>
       <div
-        class="carousel-item"
-        *ngFor="let carDetail of carDetails ; index as i; first as firstImage"
-        [ngClass]="{ active: firstImage }"
-        class="card"
-        style="width: 18rem"
+        class="d-flex flex-wrap justify-content-center justify-content-xl-start"
+        style="gap: 0.75em; padding: 0; margin-top: 20px"
       >
-        <div>
-          <img
-            src="{{ baseUrl }}{{ carDetail.imagePath[0] }}"
-            class="card-img-top"
-            alt="carImage"
-          />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ carDetail.brandName | uppercase }}</h5>
-          <p class="card-text">{{ carDetail.description | uppercase }}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <b>Renk: </b> {{ carDetail.colorName | uppercase }}
-          </li>
-          <li class="list-group-item">
-            <b>Model Yıl: </b>{{ carDetail.modelYear }}
-          </li>
-          <li class="list-group-item">
-            <b>Finkes Puanı: </b>{{ carDetail.findexScore }}
-          </li>
-        </ul>
-        <div class="card-body">
-          <div class="d-grid gap-2">
-            <button
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              type="button"
-              class="btn btn-warning"
-              routerLink="/detail/{{ carDetail.carId }}"
-            >
-              Detaylar
-            </button>
+        <div
+          class="carousel-item"
+          *ngFor="let carDetail of carDetails; index as i; first as firstImage"
+          [ngClass]="{ active: firstImage }"
+          class="card"
+          style="width: 18rem"
+        >
+          <div>
+            <img
+              src="{{ baseUrl }}{{ carDetail.imagePath[0] }}"
+              class="card-img-top"
+              alt="carImage"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ carDetail.brandName | uppercase }}</h5>
+            <p class="card-text">{{ carDetail.description | uppercase }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>Renk: </b> {{ carDetail.colorName | uppercase }}
+            </li>
+            <li class="list-group-item">
+              <b>Model Yıl: </b>{{ carDetail.modelYear }}
+            </li>
+            <li class="list-group-item">
+              <b>Finkes Puanı: </b>{{ carDetail.findexScore }}
+            </li>
+          </ul>
+          <div class="card-body">
+            <div class="d-grid gap-2">
+              <button
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                type="button"
+                class="btn btn-warning"
+                routerLink="/detail/{{ carDetail.carId }}"
+              >
+                Detaylar
+              </button>
+            </div>
           </div>
         </div>
       </div>

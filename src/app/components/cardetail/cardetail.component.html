@@ -1,5 +1,7 @@
-<br />
-
+<br>
+<br>
+<br>
+<div class="container">
 <div class="row">
   <div
     *ngIf="isLogOK() == true && rentalControl == false"
@@ -12,7 +14,7 @@
       <h5 class="card-title">Araç şu anda kiralanamaz.</h5>
       <p class="card-text">
         Araç başkası tarafından kiralandığı için kiralama işlemi
-        gerçekleştirilemiyor.Lütfen başka araçlara bakınız.
+        gerçekleştirilemiyor.Lütfen başka araçlara göz atın.
       </p>
       <div class="d-grid gap-2">
         <button type="button" class="btn btn-warning" routerLink="/cars">
@@ -106,7 +108,7 @@
             <div class="spinner-grow text-danger" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
-            <strong>Findeks puanı yetersiz lütfen başka araçlara bakınız.</strong>
+            <strong>Findeks puanınız bu araç için yeterli değil lütfen başka araçlara göz atın.</strong>
             <br />
             <div class="d-grid gap-2">
               <button type="button" class="btn btn-warning" routerLink="/cars">
@@ -267,4 +269,5 @@
     </div>
     <app-rental ></app-rental>
   </div>
+</div>
 </div>

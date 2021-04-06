@@ -25,7 +25,7 @@ export class CardetailComponent implements OnInit {
   findeksLoad = new Boolean();
   findeksError = new Boolean();
   findeksMsg: string;
-  baseUrl = 'http://localhost:5000';
+  baseUrl = 'http://localhost:5000/';
   rentalMessage = '';
 
   constructor(
