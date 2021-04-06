@@ -1,11 +1,10 @@
 ![Home](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/Home.png)
 ![carDetail](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/carDetail.png)
-![carAdd](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/carAdd.png)
-![carUpdate](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/carUpdate.png)
-![paymentDetail](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/paymentDetail.png)
-![Payment](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/Payment.png)
-![login](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/login.png)
-![register](https://github.com/canozyigiit/RentACarProject-Angular/blob/master/image/register.png)
+![carAdd](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carAdd.png)
+![carUpdate](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carUpdate.png)
+![Payment](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/payment.png)
+![login](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Login.png)
+![register](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Register.png)
 
 
 # Rentacar
