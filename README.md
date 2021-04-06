@@ -3,6 +3,7 @@
 ![carDetail1](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/rentable.png)
 ![carDetail2](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/findexis%C4%B0nsufficient.png)
 ![carDetail3](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/cannotBeRented.png)
+![carDetail4](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carDetail4.png)
 ![carAdd](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carAdd.png)
 ![carUpdate](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carUpdate.png)
 ![Rent](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/rent.png)
