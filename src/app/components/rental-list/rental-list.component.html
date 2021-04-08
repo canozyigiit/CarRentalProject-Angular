@@ -1,1 +1,24 @@
-<p>rental-list works!</p>
+<br>
+<br>
+<h5 class="alert alert-info mt-3">Kiralamalar</h5>
+
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th> Id</th>
+      <th>Araç</th>
+      <th>Müşteri</th>
+      <th>AD SOYAD</th>
+      <th>Kiralama Tarihi</th>
+      <th>Kiralama Bitiş Tarihi</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let rental of rentals">
+    <td>{{ rental.rentalId }}</td>
+    <td>{{ rental.carBrand}} {{rental.carDescription}} {{rental.carModel }}</td>
+    <td>{{ rental.companyName}} </td>
+    <td>{{rental.firstName}} {{rental.lastName }}</td>
+    <td>{{ rental.rentDate }}</td>
+    <td>{{ rental.returnDate }}</td>
+  </tr>
+</table>

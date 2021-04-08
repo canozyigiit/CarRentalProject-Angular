@@ -76,7 +76,7 @@
           Aracı kiralayabilmek için lütfen findeks puanınızı kontrol edin.
         </p>
         <div>
-          <label for="Customer" class="form-label">Müşteri</label>
+          <label class="form-label">Şirket Hesabı</label>
           <select
             formControlName="customerId"
             [(ngModel)]="customerId"
@@ -84,7 +84,7 @@
             class="form-select"
           >
             <option
-              *ngFor="let customer of customers"
+              
               [ngValue]="customer.customerId"
               class="option"
             >

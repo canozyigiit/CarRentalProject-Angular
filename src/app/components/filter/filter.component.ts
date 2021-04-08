@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
@@ -17,7 +18,8 @@ export class FilterComponent implements OnInit {
 
   constructor(
     private colorService: ColorService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -35,4 +37,34 @@ export class FilterComponent implements OnInit {
       this.brands = response.data;
     });
   }
+  getSelectedBrand(brandId: Number) {
+    if (this.currentBrandId == brandId) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  getSelectedColor(colorId: Number) {
+    if (this.currentColorId == colorId) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  filter() {
+    if(this.currentBrandId != null && this.currentColorId != null) {
+      this.router.navigate(['/cars/filter/' + this.currentBrandId + "/" + this.currentColorId])
+    }
+    else if(this.currentColorId != null) {
+      this.router.navigate(['/cars/filterColor/' + this.currentColorId])
+    }
+    else if(this.currentBrandId != null) {
+      this.router.navigate(['/cars/filterBrand/' + this.currentBrandId])
+    }
+  }
+
 }

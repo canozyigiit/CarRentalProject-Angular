@@ -19,7 +19,7 @@ import { RentalService } from 'src/app/services/rental.service';
 export class CardetailComponent implements OnInit {
   carImage: CarImage[] = [];
   carDetail: CarDetail[];
-  customers: Customer[];
+  customer: Customer;
   customerId: number;
   rentalControl = new Boolean();
   findeksLoad = new Boolean();
@@ -27,6 +27,7 @@ export class CardetailComponent implements OnInit {
   findeksMsg: string;
   baseUrl = 'http://localhost:5000/';
   rentalMessage = '';
+  userId:number=this.localStorageService.getUser().id
 
   constructor(
     private carImageService: CarimageService,
@@ -82,10 +83,13 @@ export class CardetailComponent implements OnInit {
     }
   }
   getCustomer() {
-    this.customerService.getCustomers().subscribe((response) => {
-      this.customers = response.data;
-      this.localStorageService.setItem('customer', this.customers[0]);
-    });
+    this.customerService.getCustomerByUserId(this.userId).subscribe(
+      (response) => {
+        console.log(response)
+        this.customer = response.data;
+        this.localStorageService.setItem('customer', this.customer);
+      },
+    );
   }
   setCar() {
     this.localStorageService.setItem('car', this.carDetail[0]);
@@ -116,7 +120,7 @@ export class CardetailComponent implements OnInit {
   customerCheck(event: any) {
     this.findeksLoad = false;
     this.findexService
-      .check(this.carDetail[0].carId, this.customers[0].customerId)
+      .check(this.carDetail[0].carId, this.customer.customerId)
       .subscribe(
         (response) => {
           if (response.successStatus) {

@@ -1,22 +1,35 @@
 <br>
-<h5 class="alert alert-info mt-3">Kullanıcı Listesi</h5>
-<h4 style="text-align: center">Customer</h4>
-
-<table class="table table-bordered">
-  <thead class="table-light">
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">CustomerCompanyName</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let customer of customers">
-      <td scope="col">{{ customer.customerId }}</td>
-      <td scope="col">{{ customer.companyName }}</td>
-      <td scope="col">{{ customer.firstName }}</td>
-      <td scope="col">{{ customer.lastName }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Şirket hesabı oluştur</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="customerAddForm">
+            <input formControlName="userId" type="hidden" />
+            <input formControlName="findexScore" type="hidden" />
+            <div class="mb-3">
+              <label for="companyName">Şirket Adı</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="companyName"
+                  formControlName="companyName"
+                  class="form-control"
+                  placeholder="Şirket Adı"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-warning" (click)="add()">
+          Şirket hesabı oluştur
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

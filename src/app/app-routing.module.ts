@@ -15,40 +15,39 @@ import { LoginComponent } from './components/auth-components/login/login.compone
 import { RegisterComponent } from './components/auth-components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './components/home/home.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
 
 const routes: Routes = [
-  {path:"",pathMatch:"full",component:HomeComponent},
-  {path:"cars",component:CarComponent},
-  {path:"cars/brand/:brandId",component:CarComponent},
-  {path:"cars/color/:colorId",component:CarComponent},
-  {path:'cars/detail/:carId', component:CardetailComponent},
-  {path:'detail/:carId', component:CardetailComponent},
-  {path:'rental/:carId', component:RentalComponent},
-  {path:"cars/filter/:brandId/:colorId",component:CarComponent},
-  
-  {path:"rentals",component:RentalComponent},
-  {path:"customers",component:CustomerComponent},
-  {path:"payment",component:PaymentComponent},
-  
-  {path:"cars/add",component:CarAddComponent},
-  {path:"brands/add",component:BrandAddComponent},
-  {path:"colors/add",component:ColorAddComponent},
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'cars', component: CarComponent },
+  { path: 'cars/brand/:brandId', component: CarComponent },
+  { path: 'cars/color/:colorId', component: CarComponent },
+  { path: 'cars/detail/:carId', component: CardetailComponent },
+  { path: 'detail/:carId', component: CardetailComponent },
+  { path: 'rental/:carId', component: RentalComponent },
+  { path: 'cars/filterBrand/:brandId', component: CarComponent },
+  { path: 'cars/filterColor/:colorId', component: CarComponent },
+  { path: 'cars/filter/:brandId/:colorId', component: CarComponent },
 
-  {path:"editBrands",component:BrandUpdateComponent},
-  {path:"editColors",component:ColorUpdateComponent},
-  {path:"editCars",component:CarUpdateComponent},
+  { path: 'rentals', component: RentalListComponent },
+  { path: 'customer', component: CustomerComponent },
+  { path: 'payment', component: PaymentComponent },
 
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"profil",component:UserComponent}
+  { path: 'cars/add', component: CarAddComponent },
+  { path: 'brands/add', component: BrandAddComponent },
+  { path: 'colors/add', component: ColorAddComponent },
 
-  
+  { path: 'editBrands', component: BrandUpdateComponent },
+  { path: 'editColors', component: ColorUpdateComponent },
+  { path: 'editCars', component: CarUpdateComponent },
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profil', component: UserComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { 
-  
-}
+export class AppRoutingModule {}
