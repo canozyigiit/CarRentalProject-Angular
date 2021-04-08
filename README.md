@@ -11,7 +11,7 @@
 ![carAdd](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carAdd.png)
 ## CARUPDATE
 ![carUpdate](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carUpdate.png)
-## RENT
+## RENTAL
 ![Rent](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/rent.png)
 ## PAYMENT
 ![Payment](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/payment.png)
