@@ -1,14 +1,25 @@
+##HOME
 ![Home](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Home.png)
+##CARS
 ![Cars](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/cars.png)
+##CARDETAİL
 ![carDetail1](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/rentable.png)
 ![carDetail2](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/findexis%C4%B0nsufficient.png)
 ![carDetail3](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/cannotBeRented.png)
 ![carDetail4](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carDetail4.png)
+##CARADD
 ![carAdd](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carAdd.png)
+##CARUPDATE
 ![carUpdate](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/carUpdate.png)
+##RENT
 ![Rent](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/rent.png)
+##PAYMENT
 ![Payment](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/payment.png)
+##PROFİL
+![profil](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/profil.png)
+##LOGİN
 ![login](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Login.png)
+##REGİSTER
 ![register](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Register.png)
 
 
