@@ -22,10 +22,11 @@
 ## REGİSTER
 ![register](https://github.com/canozyigiit/CarRentalProject-Angular/blob/master/readme/ReadmeImg/Register.png)
 
-#Build With
+# Build With
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/docs/)
+
 # Rentacar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
